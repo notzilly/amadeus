@@ -26,14 +26,24 @@ bot.on('message', function (user, userID, channelID, message, evt) {
        
         args = args.splice(1);
         switch(cmd) {
-            // !ping
-            case 'ping':
+            case 'ping':           // !ping
                 bot.sendMessage({
                     to: channelID,
                     message: 'Pong!'
                 });
-            break;
-            // Just add any case commands if you want to..
+                break;
+            case 'begone':         // !begone
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'BEGONE!',
+                    tts: true,
+                    embed: {
+                        image: {
+                            url: 'https://i.ytimg.com/vi/KpqX_WEpya8/hqdefault.jpg'
+                        }
+                    }
+                });
+                break;
         }
         logger.info('Message received: ' + message);
     }
