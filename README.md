@@ -1,2 +1,2 @@
-# discord-bot
+# Project M
 Experimental Discord bot
