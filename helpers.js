@@ -33,12 +33,15 @@ request.get(requestOpts, function(err, res, body){
     logger.info('Catgirls fetched');
 });
 
-// Exported functions
-var functions = {};
+// Exports
+var exports = {};
 
 // Return a pseudo random catgirl image link
-functions.getCatGirl = function() {    
+exports.getCatGirl = function() {    
     return images[Math.floor(Math.random() * images.length)];
 }
 
-module.exports = functions;
+// Exports logger
+exports.logger = logger;
+
+module.exports = exports;
