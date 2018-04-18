@@ -1,6 +1,6 @@
-var logger = require('winston');
-var auth = require('./auth.json');
-var request = require('request');
+import logger from 'winston';
+import auth from './auth.json';
+import request from 'request';
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -19,29 +19,20 @@ var requestOpts = {
 
 // Get request for catgirl images  
 var images = Array();
+logger.info('Fetching catgirls');
 request.get(requestOpts, function(err, res, body){
     
-    logger.info('Fetching catgirls');
-    
     let imagesJSON = JSON.parse(body).data; // Creates JSON of images
-    let imagesArray = Object.keys(imagesJSON).map(function(k) { return imagesJSON[k] }); // Converts JSON into array
-    
-    imagesArray.map(function(image){
-        images.push(image.link);
-    });
+    images = imagesJSON.map(image => { return image.link }); // Maps links from images
 
     logger.info('Catgirls fetched');
 });
 
-// Exports
-var exports = {};
-
-// Return a pseudo random catgirl image link
-exports.getCatGirl = function() {    
+// Exports getCatgirl
+export function getCatGirl() {
     return images[Math.floor(Math.random() * images.length)];
 }
 
 // Exports logger
-exports.logger = logger;
-
-module.exports = exports;
+const _logger = logger;
+export { _logger as logger };

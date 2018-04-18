@@ -4,6 +4,16 @@
   "description": "Project M bot for Discord",
   "main": "projectm.js",
   "author": "notzilly",
+  "babel": {
+    "presets": [
+      ["env", { "targets": {"node": "current"} }]
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0"
+  },
   "dependencies": {
     "discord.io": "github:woor/discord.io#gateway_v6",
     "request": "^2.85.0",
