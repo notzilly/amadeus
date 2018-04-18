@@ -6,6 +6,7 @@
   "author": "notzilly",
   "dependencies": {
     "discord.io": "github:woor/discord.io#gateway_v6",
+    "request": "^2.85.0",
     "winston": "^2.4.1"
   }
 }
