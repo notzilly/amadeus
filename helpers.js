@@ -17,6 +17,14 @@ var requestOpts = {
     }
 }
 
+var requestOpts2 = {
+    url: 'https://api.imgur.com/3/album/vLcaq/images',
+    headers: {
+        'Authorization': 'Client-ID ' + auth.client_id
+    }
+}
+
+
 // Get request for catgirl images  
 var images = Array();
 logger.info('Fetching catgirls');
@@ -28,9 +36,24 @@ request.get(requestOpts, function(err, res, body){
     logger.info('Catgirls fetched');
 });
 
+var baits = Array();
+logger.info('Fetching baits');
+request.get(requestOpts2, function(err, res, body){
+    
+    let imagesJSON = JSON.parse(body).data; // Creates JSON of baits
+    baits = imagesJSON.map(image => { return image.link }); // Maps links from baits
+
+    logger.info('Baits fetched');
+});
+
 // Exports getCatgirl
 export function getCatGirl() {
     return images[Math.floor(Math.random() * images.length)];
+}
+
+// Exports getBait
+export function getBait() {
+    return baits[Math.floor(Math.random() * baits.length)];
 }
 
 // Exports logger

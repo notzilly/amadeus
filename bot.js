@@ -1,6 +1,6 @@
 import Discord from 'discord.io';
 import auth from './auth.json';
-import { getCatGirl, logger } from './helpers.js';
+import { getCatGirl, getBait, logger } from './helpers.js';
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
@@ -53,6 +53,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 }); 
                 break;
                 
+            case 'b8':           // !b8
+                bot.sendMessage({
+                    to: channelID,
+                    embed: {
+                        image: {
+                            url: getBait()
+                        }
+                    }
+                }); 
+                break;
+
             default:
                 break;
         }
