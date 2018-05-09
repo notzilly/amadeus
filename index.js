@@ -1,2 +1,2 @@
 require('babel-register');
-require('./bot.js');
+require('./bot/bot.js');

@@ -2,7 +2,7 @@
   "name": "project-m",
   "version": "1.0.0",
   "description": "Project M bot for Discord",
-  "main": "projectm.js",
+  "main": "index.js",
   "author": "notzilly",
   "babel": {
     "presets": [

@@ -1,5 +1,5 @@
 import logger from 'winston';
-import auth from './auth.json';
+import auth from '../auth.json';
 import request from 'request';
 
 // Configure logger settings

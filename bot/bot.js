@@ -1,5 +1,5 @@
 import Discord from 'discord.io';
-import auth from './auth.json';
+import auth from '../auth.json';
 import { getCatGirl, getBait, logger } from './helpers.js';
 
 // Initialize Discord Bot
