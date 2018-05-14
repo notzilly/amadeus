@@ -3,8 +3,8 @@ import auth from '../auth.json';
 import { getCatGirl, getBait, logger } from './helpers.js';
 import { CatGirl } from './CatGirl.js';
 
-
 let catGirl = new CatGirl('https://api.imgur.com/3/album/qK8HH/images');
+catGirl.loadImagesFromAlbum();
 
 // Initialize Discord Bot
 var bot = new Discord.Client({

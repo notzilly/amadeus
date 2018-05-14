@@ -1,29 +1,19 @@
-import auth from '../auth.json';
-import request from 'request';
+import { Request } from './Request.js';
 
 export class CatGirl {
 
-    constructor(url){
-        this.url = url;
-        this.requestOpts = {
-            url: url,
-            headers: { 'Authorization': 'Client-ID ' + auth.client_id }
-        }
-
-        // Get request for catgirl images
-        this.images = Array();
-        request.get(this.requestOpts, function(err, res, body){
-            
-            let imagesJSON = JSON.parse(body).data; // Creates JSON of images
-            this.images = imagesJSON.map(image => { return image.link }); // Maps links from images
-            
-        });
-
-        console.log(this.images);
-
+    constructor(url){ // Constructor
+        this.request = new Request(url); // Request object
+        this.images = undefined; // Images
     }
 
-    getRandomImage(){
+    loadImagesFromAlbum() { // Load images from album using Request object
+        this.request.getAlbum().then(response => {
+            this.images = response; // If promise resolves, populates catgirl array
+        });
+    }
+
+    getRandomImage(){ // Gets random catgirl image from images array
         return this.images[Math.floor(Math.random() * this.images.length)];
     }
 }
