@@ -12,11 +12,11 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug';
 
 // Initialize catgirl object
-let catGirl = new CatGirl('https://api.imgur.com/3/album/qK8HH/images');
+let catGirl = new CatGirl('https://api.imgur.com/3/album/qK8HH/images', logger);
 catGirl.loadImagesFromAlbum();
 
 // Initialize bait object
-let bait = new Bait('https://api.imgur.com/3/album/vLcaq/images');
+let bait = new Bait('https://api.imgur.com/3/album/vLcaq/images', logger);
 bait.loadImagesFromAlbum();
 
 // Initialize Discord Bot
