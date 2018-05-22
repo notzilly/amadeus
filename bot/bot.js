@@ -1,10 +1,23 @@
 import Discord from 'discord.io';
 import auth from '../auth.json';
-import { getCatGirl, getBait, logger } from './helpers.js';
+import logger from 'winston';
 import { CatGirl } from './CatGirl.js';
+import { Bait } from './Bait.js';
 
+// Configure logger settings
+logger.remove(logger.transports.Console);
+logger.add(logger.transports.Console, {
+    colorize: true
+});
+logger.level = 'debug';
+
+// Initialize catgirl object
 let catGirl = new CatGirl('https://api.imgur.com/3/album/qK8HH/images');
 catGirl.loadImagesFromAlbum();
+
+// Initialize bait object
+let bait = new Bait('https://api.imgur.com/3/album/vLcaq/images');
+bait.loadImagesFromAlbum();
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
@@ -62,7 +75,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     to: channelID,
                     embed: {
                         image: {
-                            url: getBait()
+                            url: bait.getRandomImage()
                         }
                     }
                 }); 
