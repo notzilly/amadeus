@@ -85,5 +85,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
         }
         logger.info('Message received: ' + message);
+    } else {
+
+        //If someone says amadeus or kurisutina in chat, reply with proper answer
+        if(message.search(/.+(k|K)urisutina.+/g) > -1 || message.search(/.+(a|A)madeus.+/g) > -1){
+            logger.info('Amadeus or Kurisutina spotted in chat');
+            bot.sendMessage({
+                to: channelID,
+                message: '~TINA MO KINSHII!',
+                embed: {
+                    image: {
+                        url: 'http://i.imgur.com/vtNaFDQ.gif'
+                    }
+                }
+            });
+        }
+
     }
 });
